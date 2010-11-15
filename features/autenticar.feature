@@ -29,9 +29,7 @@ Característica: Autenticar usuarios
     Escenario: Un usuario autenticado entra
         Dado que estoy autenticado como "jgalt"
         Cuando voy a la página raíz
-        Y mostrame la página
         Entonces debería ver "jgalt"
         Y debería ver "Logout"
         Pero no debería ver "Register"
         Y no debería ver "Login"
-        Y mostrame la página

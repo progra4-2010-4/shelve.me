@@ -6,7 +6,7 @@ end
 
 Dado /^que existen los siguientes libros:$/ do |libros|
   libros.hashes.each do |libro| 
-    Book.new(libro).save!
+    Book.create!(libro)
   end
 end
 
