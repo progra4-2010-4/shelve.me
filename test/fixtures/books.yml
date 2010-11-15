@@ -14,11 +14,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  author: MyString
+  title: Mystring
+  author: Mystring
   description: MyText
 
 two:
-  title: MyString2
-  author: MyString2
+  title: Mystring2
+  author: Mystring2
   description: MyText2
