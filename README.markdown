@@ -22,3 +22,4 @@ Referencias:
 * Correr `rake db:seed` para agregar algunos libros de prueba
 * Ejecutar rake cucumber && rake test. Las pruebas deberían salir en rojo al principio de la semana y en verde al final
   pero no debería haber errores negros (problemas con librerías, etc).
+* **OJO**: cuando estés usando generadores de rails, *te va a tirar conflicto* con las pruebas que ya están escritas. Rails te preguntará si deseás sobreescribirlas, **no las sobreescribás**, escribí `n` para que se salte la sobre-escritura. 
