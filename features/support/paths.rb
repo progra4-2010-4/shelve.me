@@ -16,6 +16,12 @@ module NavigationHelpers
       new_user_session_path
     when /la página de registro/
       new_user_registration_path
+    when /la página de agregar libros/
+      new_book_path
+    when /la página de buscar libros/
+      search_books_path
+    when /la página del (\d+)to libro/
+      book_path($1)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

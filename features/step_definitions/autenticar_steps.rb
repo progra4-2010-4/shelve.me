@@ -13,9 +13,11 @@ end
 
 Dado /^que estoy autenticado como "([^"]*)"$/ do |username|
   usuario = User.find_by_username username
+  passwords = {"drFrank"=> "drmrfrank", "vlad"=>"bloodyeah", "jgalt"=>"foobarbaz"}
+
   Entonces %{voy a login}
   Y %{completo "Email" con "#{usuario.email}"}
-  Y %{completo "Password" con "foobarbaz"}
+  Y %{completo "Password" con "#{passwords[username]}"}
   Y %{apreto "Sign in"}
 end
 
