@@ -1,0 +1,24 @@
+# == Schema Information
+# Schema version: 20101115061654
+#
+# Table name: books
+#
+#  id          :integer         not null, primary key
+#  title       :string(255)
+#  author      :string(255)
+#  description :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  author: MyString
+  description: MyText
+
+two:
+  title: MyString2
+  author: MyString2
+  description: MyText2
