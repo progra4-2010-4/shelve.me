@@ -81,4 +81,36 @@ class BookTest < ActiveSupport::TestCase
     assert_equal false, f.valid?
   end
 
+  test "readers are added" do 
+    book = Book.create! :title=>"The Catcher in the Rye", :author=>"J.D. Salinger"
+    u = users(:one)
+    v = users(:two)
+    #esta es una asociación has_and_belongs_to_many:
+    #cómo declararla: http://guides.rubyonrails.org/association_basics.html#the-has_and_belongs_to_many-association
+    #cómo cambiar el nombre de la relación: http://guides.rubyonrails.org/association_basics.html#has_and_belongs_to_many-class_name
+    #cómo aplicarla a la base de datos: http://guides.rubyonrails.org/association_basics.html#creating-join-tables-for-has_and_belongs_to_many-associations
+    #cómo usarla: http://guides.rubyonrails.org/association_basics.html#has_and_belongs_to_many-association-reference
+    
+    assert_difference("book.readers.count", 2) do
+      book.readers << u
+      book.readers << v
+    end
+
+    assert book.readers.exists? :username => u.username 
+    assert book.readers.exists? :username => v.username 
+  end
+
+  test "readers are deleted" do 
+    book = Book.create! :title => "El aciago demiurgo", :author=>"Émile Michel Cioran"
+    
+    assert_difference("book.readers.count") do
+      book.readers << users(:one)
+    end
+
+    assert_difference("book.readers.count", -1) do 
+      book.readers.delete users(:one)
+    end
+    
+  end
+
 end

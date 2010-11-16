@@ -30,6 +30,7 @@ class BooksControllerTest < ActionController::TestCase
   test "should get show" do
     get :show, :id => @book.to_param
     assert_response :success
+    assert_not_nil assigns(:users)
   end
 
   test "should get search" do 

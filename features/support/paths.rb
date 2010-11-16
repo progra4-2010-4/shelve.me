@@ -21,7 +21,11 @@ module NavigationHelpers
     when /la página de buscar libros/
       search_books_path
     when /la página del (\d+)to libro/
-      book_path($1)
+      "/books/#{($1)}"
+    when /la página del libro "([^"]*)" de "([^"]*)"/
+      "/books/#{Book.find_by_title_and_author($1, $2).id}"
+    when /la página de perfil de "([^"]*)"/
+      user_path(User.find_by_username($1))
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

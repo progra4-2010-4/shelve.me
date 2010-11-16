@@ -33,4 +33,37 @@ class UserTest < ActiveSupport::TestCase
     assert u2.errors[:username].any?
 
   end
+
+  test "books are added" do 
+    
+    user= User.create! :username=>"salinger", :email=>"not@jdsalinger.com", :password=>"holden" 
+    u = books(:one)
+    v = books(:two)
+    #esta es una asociación has_and_belongs_to_many:
+    #cómo declararla: http://guides.rubyonrails.org/association_basics.html#the-has_and_belongs_to_many-association
+    #cómo cambiar el nombre de la relación: http://guides.rubyonrails.org/association_basics.html#has_and_belongs_to_many-class_name
+    #cómo aplicarla a la base de datos: http://guides.rubyonrails.org/association_basics.html#creating-join-tables-for-has_and_belongs_to_many-associations
+    #cómo usarla: http://guides.rubyonrails.org/association_basics.html#has_and_belongs_to_many-association-reference
+    
+    assert_difference("user.books.count", 2) do
+      user.books << u
+      user.books << v
+    end
+
+    assert user.books.exists? :title => u.title, :author=> u.author
+    assert user.books.exists? :title => v.title, :author=> v.author
+  end
+
+  test "books are deleted" do 
+    user= User.create! :username => "ecioran", :email=>"rumanian@crazies.com", :password=>"demiurgo" 
+    
+    assert_difference("user.books.count") do
+      user.books << books(:one)
+    end
+
+    assert_difference("user.books.count", -1) do 
+      user.books.delete books(:one)
+    end
+    
+  end
 end
