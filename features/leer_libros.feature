@@ -32,7 +32,18 @@ Característica: marcar libros como leídos
             |libro| autor | algo | otro |
             |Huis Clos | Jean-paul Sartre | I've read it! | Mark as read?    |
             |La Vida Nueva | Dante Alighieri | Mark as read? | I've read it! |
-    
+
+    Esquema del escenario: no poder marcar si no estoy autenticado
+        Dado que no estoy autenticado
+        Cuando voy a la página del libro "<libro>" de "<autor>"
+        Entonces no debería ver "I've read it"
+        Y no debería ver "Mark as read?"
+        Y no debería ver "Unmark"
+        Ejemplos:
+            |libro| autor |
+            |Huis Clos | Jean-paul Sartre |
+            |The Demon Haunted World | Carl Sagan  |
+
     Esquema del escenario: marcar libros como leídos
         Dado que estoy autenticado como "vlad"
         Cuando voy a la página del libro "<libro>" de "<autor>"
