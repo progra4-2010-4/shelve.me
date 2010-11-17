@@ -10,3 +10,9 @@ Dado /^que existen los siguientes libros:$/ do |libros|
   end
 end
 
+Dado /^que existen las siguientes reseñas:$/ do |reviews|
+  reviews.hashes.each do |r|
+    Review.create(:review=>r["reseña"], :quality=>r["calidad"],
+                  :book=>Book.find_by_title(r["libro"]), :user=>User.find_by_username(r["usuario"]))
+  end 
+end
