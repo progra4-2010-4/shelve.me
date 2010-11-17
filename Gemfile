@@ -39,6 +39,7 @@ end
 
 gem 'jquery-rails', '~> 0.2.5'
 gem "formtastic", "~> 1.1.0"
+gem 'devise'
 
 group :test do
   gem 'cucumber-rails'
