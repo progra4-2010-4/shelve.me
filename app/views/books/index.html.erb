@@ -1,0 +1,6 @@
+<h1>Todos los libros</h1>
+<ul>
+  <%@books.each do |libro|%>
+    <li><%=libro.title%> by <%=libro.author%></li>
+  <%end%>
+</ul>
