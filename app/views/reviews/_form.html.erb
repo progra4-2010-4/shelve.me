@@ -1,0 +1,7 @@
+<%=semantic_form_for [@book,@review] do |f|%>
+  <%=f.inputs do%>
+    <%=f.input :review%>
+    <%=f.input :quality, :as=>:select, :collection=>Review::QUALITY_OPTIONS%>
+  <%end%>
+  <%=f.buttons%>
+<%end%>
