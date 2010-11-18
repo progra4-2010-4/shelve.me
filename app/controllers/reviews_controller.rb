@@ -11,15 +11,23 @@ class ReviewsController < ApplicationController
   def new
     @book = Book.find params[:book_id]
     @review = Review.new
+    #estas se establecen AQUÍ: pero ¿estarán en el POST?
     @review.book = @book
     @review.user = current_user
     #redirect_to new_user_session_path unless user_signed_in?
   end
 
   def create
+    #el book y el user NO están en el POST, porque NO están
+    #en el form, así que hay que volver a obtenerlos
+
     @book = Book.find params[:book_id]
     @review = Review.new params[:review]
+
+    #COMO no vienen en el POST, hay que asociarlos:
     @review.user = current_user
+    @review.book = @book
+
     if @review.save
       redirect_to book_review_path(@book, @review)
     else
