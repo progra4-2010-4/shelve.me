@@ -19,6 +19,7 @@ class ReviewsController < ApplicationController
   def create
     @book = Book.find params[:book_id]
     @review = Review.new params[:review]
+    @review.user = current_user
     if @review.save
       redirect_to book_review_path(@book, @review)
     else
@@ -27,16 +28,22 @@ class ReviewsController < ApplicationController
   end
 
   def edit
-    @review = Review.find params[:id]
-    @book = Book.find params[:book_id]
+    @review = current_user.reviews.find params[:id]
+    #@book = Book.find params[:book_id]
+    #no necesitamos re-encontrar @book porque ya lo podemos obtener con @review.book
+    @book = @review.book
   end
 
   def update
-    @book = Book.find params[:book_id]
-
+    #un usuario sólo debería editar sus PROPIAS reviews
+    #si pusieramos : @review = Review.find params[:id]
+    #¡podríamos editar las de otros! (pruébenlo=
+    @review = current_user.reviews.find params[:id]
+    @book = @review.book
     if @review.update_attributes params[:review]
       redirect_to book_review_path(@book, @review)
     else
+      #esta view necesita la instance
       render :edit
     end
   end
