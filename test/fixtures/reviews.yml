@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20101123185855
+#
+# Table name: reviews
+#
+#  id         :integer         not null, primary key
+#  book_id    :integer
+#  user_id    :integer
+#  quality    :string(255)
+#  review     :text
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
