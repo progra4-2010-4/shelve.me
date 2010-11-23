@@ -11,4 +11,22 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
 
   has_many :reviews
+
+  has_and_belongs_to_many :books
+
+  def read(book) 
+    self.books << book
+    #equivale a 
+    #book.readers << self
+  end
+
+  def forget(book)
+    self.books.delete book
+    #equivale a 
+    #book.readers.delete self
+  end
+
+  def has_read?(book)
+    book.readers.exists? self
+  end
 end

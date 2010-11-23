@@ -4,4 +4,5 @@ class Book < ActiveRecord::Base
  validates_presence_of :title
 
  has_many :reviews
+ has_and_belongs_to_many :readers, :class_name=>"User"
 end
