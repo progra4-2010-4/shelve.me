@@ -1,9 +1,13 @@
 ShelveMe::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users, :path=>"auth"
   resources(:books, :only => [:index, :show, :new, :create ]) do 
     get 'search', :on => :collection
     resources :reviews
+  end
+
+  resources(:users, :only=>[:show]) do 
+    resources :books, :only => [:update, :destroy]
   end
   
 
