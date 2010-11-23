@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class BookTest < ActiveSupport::TestCase
+  def setup
+    @book = books :one
+    @book.cover = File.new Rails.root + "test/fixtures/images/rails.png"
+  end
   # Replace this with your real tests.
   test "book gets created" do 
     b = Book.new(:author=>"E.A. Poe", :title=>"The imp of the perverse", :description=>"essay on the human condition")
@@ -111,6 +115,14 @@ class BookTest < ActiveSupport::TestCase
       book.readers.delete users(:one)
     end
     
+  end
+
+  test "has attachment field" do 
+    assert @book.respond_to? :cover
+    assert_equal "rails.png", @book.cover.original_filename
+    #le quitamos el querystring
+    assert_match "/system/covers/#{@book.id}/original/rails.png", @book.cover.url.split('?')[0]
+    #más métodos: @book.cover.methods.sort
   end
 
 end
