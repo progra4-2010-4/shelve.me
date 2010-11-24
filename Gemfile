@@ -40,7 +40,7 @@ end
 gem 'jquery-rails', '~> 0.2.5'
 gem "formtastic", "~> 1.1.0"
 gem 'devise'
-
+gem 'paperclip'
 group :test do
   gem 'cucumber-rails'
   gem 'capybara'
