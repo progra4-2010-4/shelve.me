@@ -29,6 +29,10 @@ class ReviewsController < ApplicationController
     @review.book = @book
 
     if @review.save
+      #no enviar los correos si no hay lectores
+      unless @book.readers.empty? 
+        ReviewsMailer.new_review_email(@review).deliver
+      end
       redirect_to book_review_path(@book, @review)
     else
       render :new
