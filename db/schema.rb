@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123171353) do
+ActiveRecord::Schema.define(:version => 20101124172723) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -18,6 +18,10 @@ ActiveRecord::Schema.define(:version => 20101123171353) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   create_table "books_users", :id => false, :force => true do |t|
