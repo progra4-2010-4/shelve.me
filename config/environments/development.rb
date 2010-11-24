@@ -16,9 +16,14 @@ ShelveMe::Application.configure do
 
   # Don't care if the mailer can't send
   config.action_mailer.delivery_method = :smtp
-#  config.action_mailer.delivery_method = :file
-#  config.action_mailer.raise_delivery_errors = true 
-#  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :file
+  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.perform_deliveries = true
+
+  #Descomenten esto para usar la cuenta de muestra de gmail para
+  #enviar correos
+
+=begin
   config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
@@ -28,6 +33,7 @@ ShelveMe::Application.configure do
   :authentication       => 'plain',
   :enable_starttls_auto => true  
   }
+=end
 
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
