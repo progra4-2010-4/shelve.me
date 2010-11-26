@@ -14,7 +14,7 @@ class BooksControllerTest < ActionController::TestCase
       post :create, :book => @new_book.attributes
     end
 
-    assert_redirected_to books_path 
+    assert_redirected_to book_path assigns(:book) 
   end
 
   test "should get show" do
