@@ -1,5 +1,4 @@
 #language: es
-@wip
 Característica: gestionar libros
     Para saber de los libros 
     Como usuario del servicio
